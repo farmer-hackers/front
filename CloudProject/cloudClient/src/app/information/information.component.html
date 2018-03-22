@@ -1,0 +1,84 @@
+<app-navigation></app-navigation>
+
+
+<div class="form__field">
+         
+  <button class="btn btn-lg btn-outline-primary modal-trigger"  id="btnOpen"    (click)="gotToLaunchGame()">Lancer un nouveau jeu</button>
+
+</div>
+
+
+
+
+<div *ngIf="games.length > 0">
+<table class="highlight">
+  <thead>
+    <tr>
+        <th>name</th>
+        <th>nbGamers</th>
+        <th>creationDate</th>
+        <th>perf</th>
+        <th>public</th>
+        <th>user</th>
+        <th></th>
+        
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <tr *ngFor="let game of games"   >
+      <td>{{game.name}}</td>
+      <td>{{game.nbGamers}}</td>
+      <td>{{game.creationDate}}</td>
+      <td>{{game.perf}}</td>
+      <td>{{game.public}}</td>
+      <td>{{game.user}}</td>
+      <td><i class="material-icons" (click)="modify(game._id)">create</i></td>
+      <td><i class="material-icons">close</i></td>
+   
+    </tr>
+
+  </tbody>
+</table>
+
+</div>
+
+<!-- <div *ngIf="games.length == 0">
+
+
+    <table class="highlight">
+        <thead>
+          <tr>
+              <th>name</th>
+              <th>nbGamers</th>
+              <th>creationDate</th>
+              <th>perf</th>
+              <th>public</th>
+              <th>user</th>
+              <th></th>
+              
+          </tr>
+        </thead>
+      
+      
+        <tbody>
+          <tr *ngFor="let game of games"   >
+            <td>{{game.name}}</td>
+            <td>{{game.nbGamers}}</td>
+            <td>{{game.creationDate}}</td>
+            <td>{{game.perf}}</td>
+            <td>{{game.public}}</td>
+            <td>{{game.user}}</td>
+            <td><i class="material-icons" (click)="modify(game._id)">create</i></td>
+            <td><i class="material-icons">close</i></td>
+         
+          </tr>
+      
+        </tbody>
+      </table>
+
+    </div> -->
+  
+
+

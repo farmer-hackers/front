@@ -1,0 +1,231 @@
+<app-navigation></app-navigation>
+<body class="align">
+
+  <div class="grid">
+
+    <div> 
+
+   
+
+      <div class="form__field">
+         
+         <button class="btn btn-lg btn-outline-primary modal-trigger"  id="btnOpen"    (click)="openModal(true)">Se connecter</button>
+
+      </div>
+
+
+    </div>
+
+    <p class="text--center">Not a member? <a href="#" (click)="openModalRegistrer(true)">Sign up now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+    
+  </div>
+
+
+  
+
+
+    <!-- <div *ngIf="isLoginError" class="red-text center error-message">
+      <i class="material-icons">error</i> Incorrect username or password
+  </div> -->
+   <!-- Modal Structure Register -->
+   <div  class="modal " role="dialog" [ngStyle]="{'display': mdlSampleIsOpenRegister ? 'block' : 'none', 'opacity': 1}">
+    <div class="sm-jumbotron center-align">
+      <h2>Enregistrement</h2>
+    </div>
+    
+    <form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+      <div class="row">
+        <div class="input-field col s6">
+          <input class="validate" type="text" name="name" #name="ngModel" [(ngModel)]="user.name" minlength="4"required>
+          <label data-error="Required field!">UserName</label>
+        </div>
+        <div class="input-field col s6">
+          <input class="validate" type="password" name="pass" #pass="ngModel" [(ngModel)]="user.pass" required  minlength="8">
+          <label [attr.data-error]="pass.errors!=null?(pass.errors.required?'Required field!':'Minimum 3 characters needed'):''">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input class="validate" type="text" name="email" #email="ngModel" [(ngModel)]="user.email" [pattern]="emailPattern">
+          <label data-error="Invalid email!">Email</label>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="input-field col s12">
+            <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+           
+          </div>
+          
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <button  class="btn-large btn-submit"  (click)="annulerRegister()" >Annuler</button>
+          </div>
+          
+        </div>
+    </form>
+ 
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div *ngIf="isLoginError" class="red-text center error-message">
+      <i class="material-icons">error</i> Incorrect username or password
+  </div> -->
+   <!-- Modal Structure login -->
+   <div  class="modal " role="dialog" [ngStyle]="{'display': mdlSampleIsOpen ? 'block' : 'none', 'opacity': 1}">
+    <div class="sm-jumbotron center-align">
+      <h2>Identification</h2>
+    </div>
+    
+      <form #loginForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmitLogin(email.value,pass.value)"  >
+        <div class="row">
+          <div class="input-field col s12">
+            
+            <input type="text" #email ngModel name="email" placeholder="email" required>
+          </div>
+        </div>
+        <div class="row">
+           <div class="input-field col s12">
+            
+             <input type="password" #pass ngModel name="pass" placeholder="pass" required>
+           </div>
+         </div>
+         <div class="row">
+             <div class="input-field col s12">
+               <button [disabled]="!loginForm.valid" class="btn-large btn-submit" type="submit">Login</button>
+             </div>
+             
+           </div>
+
+           <div class="row">
+            <div class="input-field col s12">
+              <button  class="btn-large btn-submit"  (click)="annuler()" >Annuler</button>
+            </div>
+            
+          </div>
+     </form>
+ 
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+  
+  
+  
+  
+ 
+  <!--<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                  <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input disabled value="" id="disabled" type="text" class="validate">
+                  <label for="disabled">Disabled</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password" type="password" class="validate">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="email" class="validate">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  This is an inline input field:
+                  <div class="input-field inline">
+                    <input id="email" type="email" class="validate">
+                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+
+
+
+
+
+    </div>
+  </ng-template>-->
+
+
+ 
+
+
+
+  
+
+  
+</body>

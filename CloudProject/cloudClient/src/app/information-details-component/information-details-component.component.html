@@ -1,0 +1,73 @@
+
+<div class="form__field">
+         
+  <button class="btn btn-lg btn-outline-primary modal-trigger"  id="btnOpen"    (click)="gotToLaunchGame()">Lancer un nouveau jeu</button>
+
+</div>
+
+
+<div class="row" >
+  
+    
+  <div class="sm-jumbotron center-align">
+    <h2>Mise à Jour de {{game.name}}</h2>
+  </div>
+  <form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="updateGameById(userRegistrationForm)">
+    <div class="row">
+
+      <!-- <div class="input-field col s6">
+        <input class="validate" type="text" name="toto" #name="ngModel" [(ngModel)]="game.name" required>
+        <label data-error="Required field!">Nom du jeu </label>
+      </div> -->
+
+      <div class="input-field col s6">
+        <input class="validate" type="password" name="pass" #pass="ngModel" [(ngModel)]="game.pass" required  minlength="3">
+        <label [attr.data-error]="pass.errors!=null?(pass.errors.required?'Required field!':'Minimum 3 characters needed'):''">Mot de passe </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input class="validate" type="text" name="perf" #perf="ngModel" [(ngModel)]="game.perf" >
+        <label data-error="Invalid email!">Performance</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input class="validate" type="text" name="public" #public="ngModel" [(ngModel)]="game.public" >
+        <label >Public</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input class="validate" type="text" name="nbGamers" #nbGamers="ngModel" [(ngModel)]="game.nbGamers" >
+        <label data-error="Invalid email!">nbGamers</label>
+      </div>
+    </div>
+
+    <!-- <div class="row">
+      <div class="input-field col s12">
+        <input class="validate" type="text" name="user" #user="ngModel" [(ngModel)]="game.user" >
+        <label data-error="Invalid email!">user</label>
+      </div>
+    </div> -->
+
+
+    <div class="row">
+        <div class="input-field col s12">
+          <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+         
+        </div>
+      </div>
+
+      
+  </form> 
+  
+  
+
+
+</div>
+
+
+
